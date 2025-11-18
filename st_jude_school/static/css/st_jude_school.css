@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap');
+
+/* ------------------------------------ *\
+  #GLOBAL VARIABLES & THEMING
+\* ------------------------------------ */
+
+:root {
+  /* Brand Colors */
+  --primary: #0a2342; /* Navy Blue */
+  --secondary: #f2c94c; /* Gold */
+  --light: #f7f7f7;
+  --dark: #121212;
+  --white: #ffffff;
+  --black: #000000;
+
+  /* Semantic Colors */
+  --text-primary: var(--dark);
+  --text-secondary: var(--primary);
+  --text-light: var(--white);
+  --background-light: var(--light);
+  --background-dark: var(--primary);
+
+  /* Typography */
+  --font-family-body: 'Open Sans', sans-serif;
+  --font-family-heading: 'Playfair Display', serif;
+
+  --font-size-base: 1rem; /* 16px */
+  --line-height-base: 1.6;
+  --line-height-heading: 1.2;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Spacing */
+  --spacing-xxs: 0.25rem; /* 4px */
+  --spacing-xs: 0.5rem; /* 8px */
+  --spacing-sm: 0.75rem; /* 12px */
+  --spacing-md: 1rem; /* 16px */
+  --spacing-lg: 1.5rem; /* 24px */
+  --spacing-xl: 2rem; /* 32px */
+  --spacing-xxl: 3rem; /* 48px */
+  --spacing-xxxl: 4rem; /* 64px */
+
+  /* Borders & Shadows */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --box-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --box-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-speed-fast: 0.15s;
+  --transition-speed-normal: 0.3s;
+  --transition-ease: ease-in-out;
+}
+
+/* ------------------------------------ *\
+  #UNIVERSAL RESETS
+\* ------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%; /* Ensures 1rem = 16px by default */
+  -webkit-text-size-adjust: 100%; /* Prevent font size adjustment on mobile */
+  scroll-behavior: smooth; /* Smooth scroll for anchor links */
+}
+
+body {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--text-primary);
+  background-color: var(--background-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove default padding from list items */
+ul, ol {
+  list-style: none;
+}
+
+/* Reset image defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reset form element defaults */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  outline: none;
+}
+
+/* Remove button default styles */
+button {
+  cursor: pointer;
+}
+
+/* ------------------------------------ *\
+  #TYPOGRAPHY
+\* ------------------------------------ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  line-height: var(--line-height-heading);
+  margin-bottom: var(--spacing-md);
+  color: var(--text-secondary);
+  letter-spacing: -0.02em; /* Smooth letter spacing for headings */
+}
+
+h1 { font-size: 3rem; font-weight: var(--font-weight-bold); } /* 48px */
+h2 { font-size: 2.5rem; font-weight: var(--font-weight-bold); } /* 40px */
+h3 { font-size: 2rem; font-weight: var(--font-weight-medium); } /* 32px */
+h4 { font-size: 1.75rem; font-weight: var(--font-weight-medium); } /* 28px */
+h5 { font-size: 1.5rem; font-weight: var(--font-weight-medium); } /* 24px */
+h6 { font-size: 1.25rem; font-weight: var(--font-weight-medium); } /* 20px */
+
+p {
+  margin-bottom: var(--spacing-md);
+  line-height: var(--line-height-base);
+  letter-spacing: 0.01em; /* Slight letter spacing for readability */
+}
+
+small, .text-small {
+  font-size: 0.875rem; /* 14px */
+}
+
+/* Responsive Typography Scaling */
+@media (max-width: 768px) {
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.75rem; }
+  h4 { font-size: 1.5rem; }
+  h5 { font-size: 1.25rem; }
+  h6 { font-size: 1.125rem; }
+  body { font-size: 0.9375rem; /* 15px */ }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+  h5 { font-size: 1.125rem; }
+  h6 { font-size: 1rem; }
+  body { font-size: 0.875rem; /* 14px */ }
+}
+
+/* Font Weight Utility Classes */
+.fw-light { font-weight: var(--font-weight-light); }
+.fw-regular { font-weight: var(--font-weight-regular); }
+.fw-medium { font-weight: var(--font-weight-medium); }
+.fw-bold { font-weight: var(--font-weight-bold); }
+.fw-extrabold { font-weight: var(--font-weight-extrabold); }
+
+/* ------------------------------------ *\
+  #LINK DEFAULTS
+\* ------------------------------------ */
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-speed-normal) var(--transition-ease);
+}
+
+a:hover,
+a:focus {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+/* ------------------------------------ *\
+  #BUTTON DEFAULTS
+\* ------------------------------------ */
+
+button,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  transition: all var(--transition-speed-normal) var(--transition-ease);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--dark);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: var(--dark);
+  border-color: var(--secondary);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.btn-link {
+  background-color: transparent;
+  color: var(--primary);
+  padding: 0;
+  border: none;
+  text-decoration: underline;
+}
+
+.btn-link:hover,
+.btn-link:focus {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+/* Button Sizes */
+.btn-sm {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: 1.125rem;
+}
+
+/* ------------------------------------ *\
+  #LAYOUT HELPERS
+\* ------------------------------------ */
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/* ------------------------------------ *\
+  #UTILITY CLASSES
+\* ------------------------------------ */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-primary { color: var(--primary) !important; }
+.text-secondary { color: var(--secondary) !important; }
+.text-light { color: var(--text-light) !important; }
+.text-dark { color: var(--dark) !important; }
+.text-white { color: var(--white) !important; }
+
+.bg-primary { background-color: var(--primary) !important; }
+.bg-secondary { background-color: var(--secondary) !important; }
+.bg-light { background-color: var(--light) !important; }
+.bg-dark { background-color: var(--dark) !important; }
+.bg-white { background-color: var(--white) !important; }
+
+.m-0 { margin: 0 !important; }
+.mt-0 { margin-top: 0 !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.ml-0 { margin-left: 0 !important; }
+.mr-0 { margin-right: 0 !important; }
+.mx-0 { margin-left: 0 !important; margin-right: 0 !important; }
+.my-0 { margin-top: 0 !important; margin-bottom: 0 !important; }
+
+.p-0 { padding: 0 !important; }
+.pt-0 { padding-top: 0 !important; }
+.pb-0 { padding-bottom: 0 !important; }
+.pl-0 { padding-left: 0 !important; }
+.pr-0 { padding-right: 0 !important; }
+.px-0 { padding-left: 0 !important; padding-right: 0 !important; }
+.py-0 { padding-top: 0 !important; padding-bottom: 0 !important; }
+
+.m-auto { margin: auto !important; }
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+
+/* Spacing utilities (apply to m and p, all directions) */
+.m-xs { margin: var(--spacing-xs) !important; }
+.p-xs { padding: var(--spacing-xs) !important; }
+/* ... (and so on for sm, md, lg, xl, xxl, xxxl for margin and padding, all directions) */
+/* Example: */
+.mt-md { margin-top: var(--spacing-md) !important; }
+.pb-lg { padding-bottom: var(--spacing-lg) !important; }
+
+/* Display utilities */
+.d-block { display: block !important; }
+.d-inline { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+.d-flex { display: flex !important; }
+.d-none { display: none !important; }
+
+.align-items-center { align-items: center !important; }
+.justify-content-center { justify-content: center !important; }
+.flex-column { flex-direction: column !important; }
+
+/* Visually hidden but accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ------------------------------------ *\
+  #ANIMATIONS
+\* ------------------------------------ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-speed-normal) var(--transition-ease) forwards;
+}
+
+/* ------------------------------------ *\
+  #SCROLL BEHAVIOR
+\* ------------------------------------ */
+
+/* Already handled in html reset: scroll-behavior: smooth; */
+/* Additional smooth scrolling for specific elements can be added if needed,
+   but for global behavior, html is sufficient. */
+
+/* Hide scrollbar for elements with specific class but keep scrollability */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

@@ -25,6 +25,8 @@
 
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/st_jude_school.css' %}">
+        <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
 
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
@@ -38,6 +40,8 @@
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/st_jude_school.js' %}"></script>
+        <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
         {% block extra_js %}
         {# Override this in templates to add extra javascript #}
